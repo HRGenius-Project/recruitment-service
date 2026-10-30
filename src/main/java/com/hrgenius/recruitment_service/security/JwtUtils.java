@@ -2,11 +2,11 @@ package com.hrgenius.recruitment_service.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
@@ -17,11 +17,8 @@ public class JwtUtils {
     private final SecretKey key;
 
     public JwtUtils(@Value("${jwt.secret}") String secret) {
-        // Auth-service ki tarah direct UTF-8 bytes:
-        byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
-
-        // Auth-service 384-bit key use karti hai (HmacSHA384)
-        this.key = new SecretKeySpec(keyBytes, "HmacSHA384");
+        // Exact auth-service wala logic:
+        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
     public Claims extractAllClaims(String token) {

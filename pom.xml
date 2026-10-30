@@ -129,6 +129,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- OpenFeign for Inter-Service REST Calls -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!-- Spring Cloud Dependency Management -->

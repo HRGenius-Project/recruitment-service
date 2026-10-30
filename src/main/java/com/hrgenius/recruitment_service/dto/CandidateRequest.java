@@ -20,6 +20,6 @@ public class CandidateRequest {
     private String phone;
     private String resumeUrl;
 
-    @NotNull(message = "Job opening ID is required")
+//    @NotNull(message = "Job opening ID is required")
     private Long jobOpeningId;
 }
